@@ -7,6 +7,7 @@ package citybuilder;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.GridLayout;
 import static java.awt.PageAttributes.ColorType.COLOR;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -22,56 +23,80 @@ public class GameView extends JFrame {
     
     JPanel playerPanel;
     JPanel gamePanel;
+    ImageIcon house = new ImageIcon("house.png");
+    JButton culture;
     
-    JLabel [] [] gridLabel = new JLabel [5][5];
+    
     
     public GameView(){
+     
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setTitle("City Builer");
-        this.setSize(new Dimension(1000, 1000));
+        this.setSize(new Dimension(600, 600));
         this.setLayout(null);
         
         playerPanel = new JPanel();
         playerPanel.setLayout(null);
+       
         
+       
+        
+       
         gamePanel = new JPanel();
         gamePanel.setLayout(null);
         
         
         
-        playerPanel.setBounds(800,0,200,1000 );
-        gamePanel.setBounds(0, 0, 800, 1000);
+        playerPanel.setBounds(450,0,150,600 );
+        gamePanel.setBounds(0, 0, 450, 600);
         
         this.add(playerPanel);
         this.add(gamePanel);
         
-       gamePanel.setBackground(Color.red);
+        
+       culture = new JButton("Culture");
+     
        
-       getGrid();
+       GridLayout layout2 = new GridLayout(8,2);
+       playerPanel.setLayout(layout2);
+       playerPanel.add(culture);
+      
        
-      // JLabel clickedLabel = (JLabel) e.getSource();
        
-    }
-    
-    
-    public void getGrid(){
-        for(int i=0; i<5; i++){
-            for(int b=0; b<5; b++){
-                
-              gridLabel[i][b]= new JLabel();
-              
-              
-              //to add action listener to labels you have to use mouselistener.. which needs to override all these methods :(
-             gridLabel[i][b].addMouseListener(new MouseListener(){
-                @Override
+       
+       playerPanel.setBackground(Color.PINK);
+       gamePanel.setBackground(Color.green);
+       
+       
+       
+       
+       GridLayout layout = new GridLayout(5,5);
+       gamePanel.setLayout(layout);
+       
+       
+        
+       
+       JLabel [] gridLabels = new JLabel [25];
+         
+     
+        
+        for(int i=0; i<25; i++){
+          
+           gridLabels[i] = new JLabel("Label: "+i );
+           
+           gamePanel.add(gridLabels[i]);
+       
+           gridLabels[i].addMouseListener(new MouseListener(){
+               @Override
                 public void mouseClicked(MouseEvent e){
                     System.out.println("mouse clicked");
              
                     JLabel temp = (JLabel) e.getSource();
-              
-                    temp.setText("Hi");
+                   
+                    temp.setIcon(house);
                     System.out.println("Pressed");
+                    temp.validate();
                     temp.repaint();
                     
               }
@@ -90,9 +115,11 @@ public class GameView extends JFrame {
                     
                 }
             });
-                    gridLabel[i][b].setBounds(500, 500, i, b);
-                 this.gamePanel.add(gridLabel[i][b]);
-            }
+           }
+        
+        
+        
         }
-    }
+        
+
 }

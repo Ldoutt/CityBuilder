@@ -23,7 +23,8 @@ public class GameView extends JFrame {
     
     JPanel playerPanel;
     JPanel gamePanel;
-    ImageIcon house = new ImageIcon("home.gif");
+    ImageIcon house = new ImageIcon("mud_house.gif");
+   
     JButton culture;
     
     
@@ -65,7 +66,8 @@ public class GameView extends JFrame {
        
        
        
-       playerPanel.setBackground(Color.PINK);
+       playerPanel.setBackground(Color.gray);
+       
        gamePanel.setBackground(Color.green);
        
        

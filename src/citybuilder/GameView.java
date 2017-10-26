@@ -23,7 +23,7 @@ public class GameView extends JFrame {
     
     JPanel playerPanel;
     JPanel gamePanel;
-    ImageIcon house = new ImageIcon("house.png");
+    ImageIcon house = new ImageIcon("home.gif");
     JButton culture;
     
     

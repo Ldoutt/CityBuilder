@@ -16,13 +16,12 @@ public class CityBuilder {
      */
     public static void main(String[] args) {
         
-        MenuView menu = new MenuView();
-        menu.setVisible(true);
+       MenuController controller = new MenuController();
         
        // NavigationController controller = new NavigationController();
         
-       GameView game = new GameView();
-       game.setVisible(true);
+     //  GameView game = new GameView();
+    //   game.setVisible(true);
        
     }
     

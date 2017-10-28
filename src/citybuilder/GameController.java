@@ -14,18 +14,21 @@ import java.awt.event.ActionListener;
  */
 public class GameController {
     private GameView gameView;
+    String user;
  
- GameController(GameView gameView){
+ GameController(String user){
     
      this.gameView = gameView;
- 
- class ButtonListener implements ActionListener{
-     public void actionPerformed(ActionEvent e){
-         
-        
-     //    gameView.get
-     }
+     this.user = user;
+     
+    
+       
+     gameView = new GameView(user);
+     gameView.setVisible(true);
+  
  }
-   //  view.addButtonListener(new ButtonListener());
- }
+
+
+
+
 }

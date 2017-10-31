@@ -18,6 +18,7 @@ public class GameController {
  
  GameController(String user){
     
+     
      this.gameView = gameView;
      this.user = user;
      

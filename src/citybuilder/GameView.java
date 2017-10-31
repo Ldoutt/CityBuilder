@@ -26,9 +26,14 @@ public class GameView extends JFrame {
     JPanel gamePanel;
     ImageIcon house = new ImageIcon("mud_house.gif");
     JLabel displayUserLabel;
-
-    JButton culture;
-
+    JLabel culture;
+    
+    ImageIcon stoneMine = new ImageIcon("stone_iron_mine.gif");
+    JLabel displayStoneLabel;
+    JLabel displayHouseLabel;
+    //default
+    ImageIcon selectedStructure=new ImageIcon("mud_house.gif");
+    
     public GameView(String user) {
 
        
@@ -54,14 +59,83 @@ public class GameView extends JFrame {
     
        displayUserLabel= new JLabel("Welcome "+user);
 
-        culture = new JButton("Culture");
+        culture = new JLabel("Culture");
 
         GridLayout layout2 = new GridLayout(8, 2);
         playerPanel.setLayout(layout2);
+        
+        
+        
         playerPanel.add(culture);
         playerPanel.add(displayUserLabel);
 
         playerPanel.setBackground(Color.pink);
+        
+        displayStoneLabel = new JLabel();
+        displayStoneLabel.setIcon(stoneMine);
+        
+        displayHouseLabel = new JLabel();
+        displayHouseLabel.setIcon(house);
+        
+        playerPanel.add(displayStoneLabel);
+        playerPanel.add(displayHouseLabel);
+        
+     
+      
+            
+            displayStoneLabel.addMouseListener(new MouseListener() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                  selectedStructure =new ImageIcon("stone_iron_mine.gif");
+                }
+
+                @Override
+                public void mouseExited(MouseEvent e) {
+
+                }
+
+                @Override
+                public void mouseReleased(MouseEvent e) {
+
+                }
+
+                @Override
+                public void mousePressed(MouseEvent e) {
+
+                }
+
+                @Override
+                public void mouseEntered(MouseEvent e) {
+
+                }
+            });
+        
+         displayHouseLabel.addMouseListener(new MouseListener() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                  selectedStructure =new ImageIcon("mud_house.gif");
+                }
+
+                @Override
+                public void mouseExited(MouseEvent e) {
+
+                }
+
+                @Override
+                public void mouseReleased(MouseEvent e) {
+
+                }
+
+                @Override
+                public void mousePressed(MouseEvent e) {
+
+                }
+
+                @Override
+                public void mouseEntered(MouseEvent e) {
+
+                }
+            });
 
         gamePanel.setBackground(Color.green);
 
@@ -83,7 +157,7 @@ public class GameView extends JFrame {
 
                     JLabel temp = (JLabel) e.getSource();
 
-                    temp.setIcon(house);
+                    temp.setIcon(selectedStructure);
                     System.out.println("Pressed");
                     temp.validate();
                     temp.repaint();

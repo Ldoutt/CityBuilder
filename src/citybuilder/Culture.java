@@ -5,15 +5,20 @@
  */
 package citybuilder;
 
+import java.util.TimerTask;
+import javax.swing.Timer;
+
 /**
  *
  * @author Lauren
  */
-public class Culture {
+public class Culture{
     int amountOfCulture;
+    
     
     public Culture(){
       this.amountOfCulture= 0;
+     
     }
     
   public void addCulture(int amountChange){
@@ -24,4 +29,9 @@ public class Culture {
   public int getCulture(){
       return amountOfCulture;
   }
-}
+  
+  
+ 
+      
+  }
+

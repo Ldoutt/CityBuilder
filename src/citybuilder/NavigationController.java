@@ -12,13 +12,13 @@ import java.awt.event.ActionListener;
  *
  * @author Lauren
  */
-public class MenuController {
+public class NavigationController {
     private String user;
     private MenuView menuView;
     private GameView gameView;
     
     
-    public MenuController(){
+    public NavigationController(){
         this.menuView = new MenuView();
         menuView.addStartButtonListener(new StartListener());
         menuView.setVisible(true);
@@ -30,6 +30,7 @@ public class MenuController {
         public void actionPerformed(ActionEvent e){
   
             GameController gameC = new GameController(menuView.getUser());
+            menuView.setVisible(false);
         }
     }
     

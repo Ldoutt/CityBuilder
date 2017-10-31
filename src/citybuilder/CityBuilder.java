@@ -5,18 +5,22 @@
  */
 package citybuilder;
 
+import javax.swing.Timer;
+
 /**
  *
  * @author Lauren
  */
 public class CityBuilder {
 
+    //static Timer timer;
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+      //   timer = new Timer(0, this);
         
-       MenuController controller = new MenuController();
+       NavigationController controller = new NavigationController();
         
        // NavigationController controller = new NavigationController();
         

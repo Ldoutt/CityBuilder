@@ -7,6 +7,9 @@ package citybuilder;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  *
@@ -19,14 +22,19 @@ public class GameController {
  GameController(String user){
     
      
+     
      this.gameView = gameView;
      this.user = user;
      
-    
+   Timer timer = new Timer(true);
+   TimerTask myTimerTask = new addCulture();
+      
+   timer.scheduleAtFixedRate(myTimerTask, 0, 5*1000); 
        
      gameView = new GameView(user);
      gameView.setVisible(true);
-  
+     
+   
  }
 
 

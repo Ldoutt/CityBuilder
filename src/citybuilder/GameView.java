@@ -33,6 +33,7 @@ public class GameView extends JFrame {
     JLabel displayHouseLabel;
     //default
     ImageIcon selectedStructure=new ImageIcon("mud_house.gif");
+    Structure structureToAdd;
     
     public GameView(String user) {
 
@@ -87,6 +88,7 @@ public class GameView extends JFrame {
                 @Override
                 public void mouseClicked(MouseEvent e) {
                   selectedStructure =new ImageIcon("stone_iron_mine.gif");
+                  structureToAdd = new Structure("Stone Structure");
                 }
 
                 @Override
@@ -114,6 +116,7 @@ public class GameView extends JFrame {
                 @Override
                 public void mouseClicked(MouseEvent e) {
                   selectedStructure =new ImageIcon("mud_house.gif");
+                   structureToAdd = new Structure("Mud House");
                 }
 
                 @Override
@@ -153,10 +156,15 @@ public class GameView extends JFrame {
             gridLabels[i].addMouseListener(new MouseListener() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
+                    
+                    StructureCntl structurecntl = null;
+                    structurecntl= structurecntl.getStructureCntl();
+                    structurecntl.addStructure(structureToAdd);
+                    
                     System.out.println("mouse clicked");
 
                     JLabel temp = (JLabel) e.getSource();
-
+                    
                     temp.setIcon(selectedStructure);
                     System.out.println("Pressed");
                     temp.validate();
@@ -187,7 +195,7 @@ public class GameView extends JFrame {
         }
         
         
-
+       
     
 
         
@@ -199,4 +207,7 @@ public class GameView extends JFrame {
           return userName;
       }  
 
+      
+    
+      
 }

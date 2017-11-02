@@ -14,7 +14,12 @@ public class Structure {
     Resource resource;
     String resourceName;
     
-    public Structure(){
-        
+    public Structure(String name){
+        this.name = name;
+        //resource 
+    }
+    
+    public String getName(){
+        return name;
     }
 }

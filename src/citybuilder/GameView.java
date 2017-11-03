@@ -11,6 +11,7 @@ import java.awt.GridLayout;
 import static java.awt.PageAttributes.ColorType.COLOR;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.*;
@@ -33,11 +34,16 @@ public class GameView extends JFrame {
     JLabel displayHouseLabel;
     //default
     ImageIcon selectedStructure=new ImageIcon("mud_house.gif");
-    Structure structureToAdd;
+    Structure structureToAdd=new Structure("Mud House");
+    
+    ArrayList <Structure> s2;// = new ArrayList <Structure>();
+    StructureCntl s1; // = new StructureCntl(s2);
     
     public GameView(String user) {
 
-       
+        s2 = new ArrayList <Structure>();
+        s1 = new StructureCntl(s2);
+        
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setTitle("City Builer");
@@ -88,7 +94,9 @@ public class GameView extends JFrame {
                 @Override
                 public void mouseClicked(MouseEvent e) {
                   selectedStructure =new ImageIcon("stone_iron_mine.gif");
-                  structureToAdd = new Structure("Stone Structure");
+                  structureToAdd = new Structure("Stone Mine");
+                //  s1 = StructureCntl.getStructureCntl();
+                 // s1.addStructure(structureToAdd);
                 }
 
                 @Override
@@ -117,6 +125,8 @@ public class GameView extends JFrame {
                 public void mouseClicked(MouseEvent e) {
                   selectedStructure =new ImageIcon("mud_house.gif");
                    structureToAdd = new Structure("Mud House");
+                   //s1 = StructureCntl.getStructureCntl();
+                  //s1.addStructure(structureToAdd);
                 }
 
                 @Override
@@ -157,9 +167,11 @@ public class GameView extends JFrame {
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     
-                    StructureCntl structurecntl = null;
-                    structurecntl= structurecntl.getStructureCntl();
-                    structurecntl.addStructure(structureToAdd);
+                   // StructureCntl structurecntl;
+                    //structurecntl
+                    s1= StructureCntl.getStructureCntl();
+                    //structurecntl
+                    s1.addStructure(structureToAdd);
                     
                     System.out.println("mouse clicked");
 

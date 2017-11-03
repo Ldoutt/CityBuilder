@@ -14,10 +14,11 @@ import java.util.ArrayList;
 public class StructureCntl {
    
     private ArrayList <Structure> structures;
-  StructureCntl structureCntl;
+    private static StructureCntl structureCntl;
   
-    public StructureCntl(){
-       // structures = new ArrayList<>();
+    public StructureCntl(ArrayList <Structure> structures){
+        this.structures = structures;
+     
     }
   
     
@@ -25,19 +26,20 @@ public class StructureCntl {
     
     public void addStructure(Structure addStructure){
         structures.add(addStructure);
+//        System.out.println(addStructure.getName());
     }
     
     public ArrayList <Structure> getStructureList(){
-        if(structures==null){
+        /*if(structures==null){
             structures = new ArrayList <Structure>();
-        }
+        }*/
         
         return structures;
     }
     
-    public StructureCntl getStructureCntl(){
+    public static StructureCntl getStructureCntl(){
         if(structureCntl ==null){
-            structureCntl = new StructureCntl();
+           StructureCntl.structureCntl = new StructureCntl(new ArrayList <Structure>());         
         }
         
         return structureCntl;

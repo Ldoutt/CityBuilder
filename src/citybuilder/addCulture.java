@@ -14,20 +14,21 @@ import java.util.TimerTask;
  */
 public class addCulture extends TimerTask{
 Culture culture = new Culture();
-StructureCntl structurecntl;
+
  ArrayList <Structure> boardStuff;
     @Override
     public void run() {
     //   culture.addCulture(10);
     //    System.out.println(culture.getCulture());
      
-     structurecntl= structurecntl.getStructureCntl();
-  
+     StructureCntl structurecntl = StructureCntl.getStructureCntl();
+     
     
     boardStuff = structurecntl.getStructureList();
      
    for(Structure s : boardStuff){
        
+       System.out.println(s.getName());
         if(s.getName().equals("Mud House")){
             culture.addCulture(5);
         }

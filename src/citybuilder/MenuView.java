@@ -24,7 +24,7 @@ public class MenuView extends JFrame{
     JButton startButton;
     JLabel titleOfGame;
     JTextField userNameField;
-
+     ImageIcon title = new ImageIcon("City Builder.png");
     
     public MenuView(){
 
@@ -45,7 +45,8 @@ public class MenuView extends JFrame{
         
         
         startButton = new JButton("start");
-        titleOfGame = new JLabel("City Builder");
+        titleOfGame = new JLabel();
+        titleOfGame.setIcon(title);
         titleOfGame.setBackground(Color.blue);
         userNameField = new JTextField("Enter UserName Here");
   

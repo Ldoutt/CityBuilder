@@ -24,16 +24,18 @@ public class GameController {
      
      
      this.gameView = gameView;
+
+     
      this.user = user;
      
    Timer timer = new Timer(true);
-   TimerTask myTimerTask = new addCulture();
+   TimerTask myTimerTask = new AddAttributes();
       
    timer.scheduleAtFixedRate(myTimerTask, 0, 5*1000); 
        
      gameView = new GameView(user);
      gameView.setVisible(true);
-     
+     gameView.setGameView(this.gameView);
    
  }
 

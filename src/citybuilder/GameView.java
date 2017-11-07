@@ -35,10 +35,16 @@ public class GameView extends JFrame {
     //default
     ImageIcon selectedStructure=new ImageIcon("mud_house.gif");
     Structure structureToAdd=new Structure("Mud House");
+    Resource resourceToAdd;
     
     ArrayList <Structure> s2;// = new ArrayList <Structure>();
     StructureCntl s1; // = new StructureCntl(s2);
-    
+    static GameView gameView;
+    JLabel resourceLabelOne;
+    JLabel resourceLabelTwo;
+    Resource wealth;
+    Resource stone;
+     
     public GameView(String user) {
 
         s2 = new ArrayList <Structure>();
@@ -67,7 +73,8 @@ public class GameView extends JFrame {
        displayUserLabel= new JLabel("Welcome "+user);
 
         culture = new JLabel("Culture");
-
+        resourceLabelOne = new JLabel("Wealth");
+        resourceLabelTwo = new JLabel("Stone");
         GridLayout layout2 = new GridLayout(8, 2);
         playerPanel.setLayout(layout2);
         
@@ -86,7 +93,8 @@ public class GameView extends JFrame {
         
         playerPanel.add(displayStoneLabel);
         playerPanel.add(displayHouseLabel);
-        
+        playerPanel.add(resourceLabelOne);
+        playerPanel.add(resourceLabelTwo);
      
       
             
@@ -95,6 +103,7 @@ public class GameView extends JFrame {
                 public void mouseClicked(MouseEvent e) {
                   selectedStructure =new ImageIcon("stone_iron_mine.gif");
                   structureToAdd = new Structure("Stone Mine");
+                  resourceToAdd = new Resource("Stone");
                 //  s1 = StructureCntl.getStructureCntl();
                  // s1.addStructure(structureToAdd);
                 }
@@ -125,6 +134,7 @@ public class GameView extends JFrame {
                 public void mouseClicked(MouseEvent e) {
                   selectedStructure =new ImageIcon("mud_house.gif");
                    structureToAdd = new Structure("Mud House");
+                   resourceToAdd = new Resource("Wealth");
                    //s1 = StructureCntl.getStructureCntl();
                   //s1.addStructure(structureToAdd);
                 }
@@ -219,7 +229,26 @@ public class GameView extends JFrame {
           return userName;
       }  
 
+      public void updateLabel(int amountOfCulture){
+          culture.setText("Culture: " +amountOfCulture);
+      }
       
+      public void setGameView(GameView view){
+          
+          gameView = view;
+      }
+      public static GameView getGameView(){
+          return gameView;
+      }
     
-      
+      public void updateResourceLabels(String type, int amount){
+          if(type.equals("Wealth")){
+            resourceLabelOne.setText("Wealth "+amount);   
+          }
+          else{
+          resourceLabelTwo.setText("Stone "+amount);
+      }
+          
+          
+      }
 }

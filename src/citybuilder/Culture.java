@@ -14,7 +14,7 @@ import javax.swing.Timer;
  */
 public class Culture{
     int amountOfCulture;
-    
+    GameView view;
     
     public Culture(){
       this.amountOfCulture= 0;
@@ -24,6 +24,9 @@ public class Culture{
   public void addCulture(int amountChange){
       
       amountOfCulture = amountOfCulture + amountChange;
+      view = GameView.getGameView();
+      view.updateLabel(amountOfCulture);
+      
   }
   
   public int getCulture(){

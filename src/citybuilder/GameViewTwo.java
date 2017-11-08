@@ -43,7 +43,7 @@ public class GameViewTwo extends JFrame{
     StructureCntl s1; // = new StructureCntl(s2);
     static GameViewTwo gameView;
     JLabel resourceLabelOne;
-    JLabel resourceLabelTwo;
+   
     Resource wealth;
     Resource stone;
      
@@ -75,8 +75,7 @@ public class GameViewTwo extends JFrame{
        displayUserLabel= new JLabel("Welcome "+user);
 
         culture = new JLabel("Culture");
-        resourceLabelOne = new JLabel("Wealth");
-        resourceLabelTwo = new JLabel("Copper");
+        resourceLabelOne = new JLabel("Copper");
         GridLayout layout2 = new GridLayout(8, 2);
         playerPanel.setLayout(layout2);
         
@@ -96,7 +95,7 @@ public class GameViewTwo extends JFrame{
         playerPanel.add(displayStoneLabel);
         playerPanel.add(displayHouseLabel);
         playerPanel.add(resourceLabelOne);
-        playerPanel.add(resourceLabelTwo);
+     
      
       
             
@@ -136,7 +135,7 @@ public class GameViewTwo extends JFrame{
                 public void mouseClicked(MouseEvent e) {
                   selectedStructure =new ImageIcon("house.gif");
                    structureToAdd = new Structure("Wooden House");
-                   resourceToAdd = new Resource("Wealth");
+                   
                    //s1 = StructureCntl.getStructureCntl();
                   //s1.addStructure(structureToAdd);
                 }
@@ -245,7 +244,7 @@ public class GameViewTwo extends JFrame{
     
       public void updateResourceLabels(String type, int amount){
           
-          resourceLabelTwo.setText("Copper "+amount);
+          resourceLabelOne.setText("Copper "+amount);
       
       }
 }

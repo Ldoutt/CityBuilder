@@ -14,6 +14,8 @@ public class Resource {
     String name;
     int amount;
     GameView view;
+    GameViewTwo viewTwo;
+    GameViewThree viewThree;
     
     
     public Resource(String name){
@@ -25,19 +27,31 @@ public class Resource {
     
   public void addResource(String name){
      if(name.equals("Stone")){
-         this.amount = this.amount+10; 
-      }
-      else if(name.equals("Copper")){
-          this.amount= this.amount+10;
-      }
-      else if(name.equals("Iron")){
-          this.amount= this.amount+10;
-      }
-      
-      
+         this.amount = this.amount+10;
       view = GameView.getGameView();
       view.updateResourceLabels( name, amount);
       System.out.println(""+name+" "+ amount);
+         
+      }
+     
+      else if(name.equals("Copper")){
+          this.amount= this.amount+10;
+              
+      viewTwo = GameViewTwo.getGameView();
+      viewTwo.updateResourceLabels( name, amount);
+      System.out.println(""+name+" "+ amount);
+      }
+      
+      else if(name.equals("Iron")){
+          this.amount= this.amount+10;
+              
+      viewThree = GameViewThree.getGameView();
+      viewThree.updateResourceLabels( name, amount);
+      System.out.println(""+name+" "+ amount);
+      }
+      
+      
+      
   }
   
   public int getResource(){

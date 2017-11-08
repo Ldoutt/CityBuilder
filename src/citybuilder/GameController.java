@@ -19,19 +19,21 @@ public class GameController {
     private GameView gameView;
     String user;
  Culture culture;
+
  
  GameController(String user, int i){
     
      this.culture = culture;
      
      this.gameView = gameView;
-
+     
      
      this.user = user;
      
 
       
    if(i==1){
+      
    Timer timer = new Timer(true);
    TimerTask myTimerTask = new AddAttributes();
       
@@ -43,16 +45,16 @@ public class GameController {
  
    }
    else if(i==2){
-     gameView.setVisible(false);
-    // GameViewTwo gameViewTwo = new GameViewTwo(user);
-  //   gameViewTwo.setVisible(true); 
-    // gameViewTwo.setGameView(gameView);   
+     
+    GameViewTwo gameViewTwo = new GameViewTwo(user);
+  gameViewTwo.setVisible(true); 
+    gameViewTwo.setGameView(gameViewTwo);   
     }
     
    else if(i==3){
-    GameViewThree game = new GameViewThree(user);
-    game.setVisible(true);
-    game.setGameView(gameView);
+    GameViewThree gameViewThree = new GameViewThree(user);
+    gameViewThree.setVisible(true);
+    gameViewThree.setGameView(gameViewThree);
     }     
  }
 

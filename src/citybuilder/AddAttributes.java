@@ -31,34 +31,34 @@ Resource resource =new Resource("");
        
        System.out.println(s.getName());
         if(s.getName().equals("Mud House")){
-            culture.addCulture(5);
+            culture.addCulture(1,1);
         }
         else if(s.getName().equals("Wooden House")){
-            culture.addCulture(5);
+            culture.addCulture(1,2);
         }
         
         else if(s.getName().equals("Stone House")){
-            culture.addCulture(5);
+            culture.addCulture(1,3);
         }
         else if(s.getName().equals("Stone Mine")){
-            culture.addCulture(1);
+            culture.addCulture(1, 1);
             resource.addResource("Stone");
         }
         else if(s.getName().equals("Copper Mine")){
-            culture.addCulture(2);
+            culture.addCulture(1, 2);
             resource.addResource("Copper");
          }
         else if(s.getName().equals("Iron Mine")){
-            culture.addCulture(3);
+            culture.addCulture(1, 3);
             resource.addResource("Iron");
          }
     }
    
-   if(culture.getCulture()>10& culture.getCulture()<50){
+   if(culture.getCulture()==10){
           GameController controller = new GameController("", 2);
           
     }
-    if(culture.getCulture()>50){
+    if(culture.getCulture()==20){
         GameController controller = new GameController("", 3);
     }
     }

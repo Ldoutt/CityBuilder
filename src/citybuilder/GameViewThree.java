@@ -48,7 +48,7 @@ public class GameViewThree extends JFrame{
     
     ArrayList <Structure> s2;// = new ArrayList <Structure>();
     StructureCntl s1; // = new StructureCntl(s2);
-    static GameView gameView;
+    static GameViewThree gameView;
     JLabel resourceLabelOne;
     JLabel resourceLabelTwo;
     Resource wealth;
@@ -242,21 +242,18 @@ public class GameViewThree extends JFrame{
           culture.setText("Culture: " +amountOfCulture);
       }
       
-      public void setGameView(GameView view){
+      public void setGameView(GameViewThree view){
           
           gameView = view;
       }
-      public static GameView getGameView(){
+      public static GameViewThree getGameView(){
           return gameView;
       }
     
       public void updateResourceLabels(String type, int amount){
-          if(type.equals("Wealth")){
-            resourceLabelOne.setText("Wealth "+amount);   
-          }
-          else{
-          resourceLabelTwo.setText("Iron"+amount);
-      }
+          
+          resourceLabelTwo.setText("Iron "+amount);
+      
           
           
       }

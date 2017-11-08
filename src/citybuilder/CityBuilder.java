@@ -19,7 +19,7 @@ public class CityBuilder {
       
       
        NavigationController controller = new NavigationController();
-        
+      int version;
        // NavigationController controller = new NavigationController();
         
      //  GameView game = new GameView();

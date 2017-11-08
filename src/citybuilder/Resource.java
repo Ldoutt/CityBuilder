@@ -14,8 +14,6 @@ public class Resource {
     String name;
     int amount;
     GameView view;
-    Resource wealth;
-    Resource stone;
     
     
     public Resource(String name){
@@ -25,15 +23,18 @@ public class Resource {
     
  
     
-  public void addResource(String name, int amountChange){
-      if(name.equals("Wealth")){
-         
-         amount= wealth.getResource(); 
+  public void addResource(String name){
+     if(name.equals("Stone")){
+         this.amount = this.amount+10; 
       }
-      else{
-          amount= stone.getResource();
+      else if(name.equals("Copper")){
+          this.amount= this.amount+10;
       }
-      amount = amount + amountChange;
+      else if(name.equals("Iron")){
+          this.amount= this.amount+10;
+      }
+      
+      
       view = GameView.getGameView();
       view.updateResourceLabels( name, amount);
       System.out.println(""+name+" "+ amount);
@@ -42,11 +43,6 @@ public class Resource {
   public int getResource(){
       return amount;
   }
-    public Resource getStone(){
-        return stone;
-    }
-    public Resource getWealth(){
-        return wealth;
-    }
+  
     
 }

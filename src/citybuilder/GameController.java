@@ -18,25 +18,42 @@ import java.util.TimerTask;
 public class GameController {
     private GameView gameView;
     String user;
+ Culture culture;
  
- GameController(String user){
+ GameController(String user, int i){
     
-     
+     this.culture = culture;
      
      this.gameView = gameView;
 
      
      this.user = user;
      
+
+      
+   if(i==1){
    Timer timer = new Timer(true);
    TimerTask myTimerTask = new AddAttributes();
       
    timer.scheduleAtFixedRate(myTimerTask, 0, 5*1000); 
+    gameView = new GameView(user);
+    gameView.setVisible(true);
+    gameView.setGameView(this.gameView);
        
-     gameView = new GameView(user);
-     gameView.setVisible(true);
-     gameView.setGameView(this.gameView);
-   
+ 
+   }
+   else if(i==2){
+     gameView.setVisible(false);
+    // GameViewTwo gameViewTwo = new GameViewTwo(user);
+  //   gameViewTwo.setVisible(true); 
+    // gameViewTwo.setGameView(gameView);   
+    }
+    
+   else if(i==3){
+    GameViewThree game = new GameViewThree(user);
+    game.setVisible(true);
+    game.setGameView(gameView);
+    }     
  }
 
 

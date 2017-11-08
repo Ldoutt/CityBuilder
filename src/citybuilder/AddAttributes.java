@@ -14,7 +14,7 @@ import java.util.TimerTask;
  */
 public class AddAttributes extends TimerTask{
 Culture culture = new Culture();
-Resource resource;
+Resource resource =new Resource("");
 
  ArrayList <Structure> boardStuff;
     @Override
@@ -32,16 +32,35 @@ Resource resource;
        System.out.println(s.getName());
         if(s.getName().equals("Mud House")){
             culture.addCulture(5);
-            resource = new Resource("Wealth");
-            resource.addResource("Wealth", 50);
+        }
+        else if(s.getName().equals("Wooden House")){
+            culture.addCulture(5);
+        }
+        
+        else if(s.getName().equals("Stone House")){
+            culture.addCulture(5);
         }
         else if(s.getName().equals("Stone Mine")){
-            culture.addCulture(10);
-            resource = new Resource("Stone");
-            resource.addResource("Stone", 100);
+            culture.addCulture(1);
+            resource.addResource("Stone");
         }
-        System.out.println(culture.getCulture());
-     }
+        else if(s.getName().equals("Copper Mine")){
+            culture.addCulture(2);
+            resource.addResource("Copper");
+         }
+        else if(s.getName().equals("Iron Mine")){
+            culture.addCulture(3);
+            resource.addResource("Iron");
+         }
     }
-    
+   
+   if(culture.getCulture()>10& culture.getCulture()<50){
+          GameController controller = new GameController("", 2);
+          
+    }
+    if(culture.getCulture()>50){
+        GameController controller = new GameController("", 3);
+    }
+    }
 }
+

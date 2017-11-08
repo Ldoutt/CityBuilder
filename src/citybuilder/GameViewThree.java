@@ -5,36 +5,45 @@
  */
 package citybuilder;
 
+
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import static java.awt.PageAttributes.ColorType.COLOR;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.*;
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
 /**
  *
  * @author Lauren
  */
-public class GameView extends JFrame {
+public class GameViewThree extends JFrame{
+
 
     String userName;
     JPanel playerPanel;
     JPanel gamePanel;
-    ImageIcon house = new ImageIcon("mud_house.gif");
+    ImageIcon house = new ImageIcon("stone_house.gif");
     JLabel displayUserLabel;
     JLabel culture;
     
-    ImageIcon stoneMine = new ImageIcon("stone_iron_mine.gif");
+    ImageIcon copperMine = new ImageIcon("iron_mine.gif");
     JLabel displayStoneLabel;
     JLabel displayHouseLabel;
     //default
-    ImageIcon selectedStructure=new ImageIcon("mud_house.gif");
-    Structure structureToAdd=new Structure("Mud House");
+    ImageIcon selectedStructure=new ImageIcon("stone_house.gif");
+    Structure structureToAdd=new Structure("Stone House");
     Resource resourceToAdd;
     
     ArrayList <Structure> s2;// = new ArrayList <Structure>();
@@ -45,14 +54,14 @@ public class GameView extends JFrame {
     Resource wealth;
     Resource stone;
      
-    public GameView(String user) {
+    public GameViewThree(String user) {
 
         s2 = new ArrayList <Structure>();
         s1 = new StructureCntl(s2);
         
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
-        this.setTitle("Stone Age");
+        this.setTitle("Iron Age");
         this.setSize(new Dimension(600, 600));
         this.setLayout(null);
         
@@ -73,8 +82,8 @@ public class GameView extends JFrame {
        displayUserLabel= new JLabel("Welcome "+user);
 
         culture = new JLabel("Culture");
-        resourceLabelOne = new JLabel("Stone");
-        
+        resourceLabelOne = new JLabel("Wealth");
+        resourceLabelTwo = new JLabel("Iron");
         GridLayout layout2 = new GridLayout(8, 2);
         playerPanel.setLayout(layout2);
         
@@ -83,10 +92,10 @@ public class GameView extends JFrame {
         playerPanel.add(culture);
         playerPanel.add(displayUserLabel);
 
-        playerPanel.setBackground(Color.pink);
+        playerPanel.setBackground(Color.green);
         
         displayStoneLabel = new JLabel();
-        displayStoneLabel.setIcon(stoneMine);
+        displayStoneLabel.setIcon(copperMine);
         
         displayHouseLabel = new JLabel();
         displayHouseLabel.setIcon(house);
@@ -94,16 +103,16 @@ public class GameView extends JFrame {
         playerPanel.add(displayStoneLabel);
         playerPanel.add(displayHouseLabel);
         playerPanel.add(resourceLabelOne);
-      
+        playerPanel.add(resourceLabelTwo);
      
       
             
             displayStoneLabel.addMouseListener(new MouseListener() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                  selectedStructure =new ImageIcon("stone_iron_mine.gif");
-                  structureToAdd = new Structure("Stone Mine");
-                  resourceToAdd = new Resource("Stone");
+                  selectedStructure =new ImageIcon("copper_mine.gif");
+                  structureToAdd = new Structure("Copper Mine");
+                  resourceToAdd = new Resource("Copper");
                 //  s1 = StructureCntl.getStructureCntl();
                  // s1.addStructure(structureToAdd);
                 }
@@ -132,10 +141,11 @@ public class GameView extends JFrame {
          displayHouseLabel.addMouseListener(new MouseListener() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                  selectedStructure =new ImageIcon("mud_house.gif");
-                   structureToAdd = new Structure("Mud House");
-                   
-               
+                  selectedStructure =new ImageIcon("stone_house.gif");
+                   structureToAdd = new Structure("Stone House");
+                   resourceToAdd = new Resource("Wealth");
+                   //s1 = StructureCntl.getStructureCntl();
+                  //s1.addStructure(structureToAdd);
                 }
 
                 @Override
@@ -159,7 +169,7 @@ public class GameView extends JFrame {
                 }
             });
 
-        gamePanel.setBackground(Color.green);
+        gamePanel.setBackground(Color.LIGHT_GRAY);
 
         GridLayout layout = new GridLayout(5, 5);
         gamePanel.setLayout(layout);
@@ -230,7 +240,6 @@ public class GameView extends JFrame {
 
       public void updateLabel(int amountOfCulture){
           culture.setText("Culture: " +amountOfCulture);
-          
       }
       
       public void setGameView(GameView view){
@@ -242,16 +251,15 @@ public class GameView extends JFrame {
       }
     
       public void updateResourceLabels(String type, int amount){
-          if(type.equals("Stone")){
-            resourceLabelOne.setText("Stone "+amount);   
+          if(type.equals("Wealth")){
+            resourceLabelOne.setText("Wealth "+amount);   
           }
-        /*  else if(type.equals("Copper")){
-              resourceLabelOne.setText("Copper "+amount);  
-          }
-          else if(type.equals("Iron")){
-              resourceLabelOne.setText("Iron"+ amount);
-          }
+          else{
+          resourceLabelTwo.setText("Iron"+amount);
+      }
           
-         */ 
+          
       }
 }
+
+

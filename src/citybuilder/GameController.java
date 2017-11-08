@@ -52,10 +52,12 @@ public class GameController {
     }
     
    else if(i==3){
+        
+       
     GameViewThree gameViewThree = new GameViewThree(user);
     gameViewThree.setVisible(true);
     gameViewThree.setGameView(gameViewThree);
-    }     
+   }  
  }
 
 

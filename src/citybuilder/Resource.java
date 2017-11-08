@@ -47,7 +47,7 @@ public class Resource {
               
       viewThree = GameViewThree.getGameView();
       viewThree.updateResourceLabels( name, amount);
-      System.out.println(""+name+" "+ amount);
+     
       }
       
       
@@ -57,6 +57,7 @@ public class Resource {
   public int getResource(){
       return amount;
   }
+ 
   
-    
+ 
 }

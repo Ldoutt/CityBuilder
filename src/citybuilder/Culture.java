@@ -37,7 +37,8 @@ public class Culture{
     }
     else if(versionView==3){
         viewThree = GameViewThree.getGameView();
-      viewThree.updateLabel(amountOfCulture);
+        viewThree.updateLabel(amountOfCulture);
+        
     }
       
   }

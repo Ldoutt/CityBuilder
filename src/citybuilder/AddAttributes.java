@@ -51,15 +51,18 @@ Resource resource =new Resource("");
         else if(s.getName().equals("Iron Mine")){
             culture.addCulture(1, 3);
             resource.addResource("Iron");
+          
          }
     }
    
    if(culture.getCulture()==10){
           GameController controller = new GameController("", 2);
           
+          
     }
     if(culture.getCulture()==20){
         GameController controller = new GameController("", 3);
+        
     }
     }
 }

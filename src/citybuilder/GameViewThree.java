@@ -110,9 +110,9 @@ public class GameViewThree extends JFrame{
             displayStoneLabel.addMouseListener(new MouseListener() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                  selectedStructure =new ImageIcon("copper_mine.gif");
-                  structureToAdd = new Structure("Copper Mine");
-                  resourceToAdd = new Resource("Copper");
+                  selectedStructure =new ImageIcon("iron_mine.gif");
+                  structureToAdd = new Structure("Iron Mine");
+                  resourceToAdd = new Resource("Iron");
                 //  s1 = StructureCntl.getStructureCntl();
                  // s1.addStructure(structureToAdd);
                 }

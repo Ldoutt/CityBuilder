@@ -124,8 +124,8 @@ public class GameController {
           
           gameViewThree.updateMoneyLabel(money); 
           amount= amount-10;
-          gameView.updateResourceLabels("Iron", amount);
-          gameView.setResourceAmount(amount);
+          gameViewThree.updateResourceLabels("Iron", amount);
+          gameViewThree.setResourceAmount(amount);
        
         }
     }   

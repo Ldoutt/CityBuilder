@@ -15,6 +15,8 @@ import java.util.TimerTask;
 public class AddAttributes extends TimerTask{
 Culture culture = new Culture();
 Resource resource =new Resource("");
+boolean oneTimeSwitch=false;
+boolean secondOneTimeSwitch=false;
 
  ArrayList <Structure> boardStuff;
     @Override
@@ -55,14 +57,16 @@ Resource resource =new Resource("");
          }
     }
    
-   if(culture.getCulture()==10){
+   if(culture.getCulture()>10& oneTimeSwitch==false){
           GameController controller = new GameController("", 2);
           controller.setGameController(controller);
+          oneTimeSwitch=true;
           
     }
-    if(culture.getCulture()==30){
+    if(culture.getCulture()>40& secondOneTimeSwitch==false){
         GameController controller = new GameController("", 3);
         controller.setGameController(controller);
+        secondOneTimeSwitch=true;
     }
     }
 }

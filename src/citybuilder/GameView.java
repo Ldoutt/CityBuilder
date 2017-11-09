@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import static java.awt.PageAttributes.ColorType.COLOR;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -33,8 +34,8 @@ public class GameView extends JFrame {
     JLabel displayStoneLabel;
     JLabel displayHouseLabel;
     //default
-    ImageIcon selectedStructure=new ImageIcon("mud_house.gif");
-    Structure structureToAdd=new Structure("Mud House");
+    ImageIcon selectedStructure=new ImageIcon("stone_iron_mine.gif");
+    Structure structureToAdd=new Structure("Stone Mine");
     Resource resourceToAdd;
     
     ArrayList <Structure> s2;// = new ArrayList <Structure>();
@@ -42,11 +43,15 @@ public class GameView extends JFrame {
     static GameView gameView;
     JLabel resourceLabelOne;
     JLabel resourceLabelTwo;
-    Resource wealth;
+   
     Resource stone;
+    JLabel money;
+    JButton resourceToMoney;
+    int amountOfStone;
+    GameController controller;
      
     public GameView(String user) {
-
+        this.amountOfStone=0;
         s2 = new ArrayList <Structure>();
         s1 = new StructureCntl(s2);
         
@@ -74,6 +79,8 @@ public class GameView extends JFrame {
 
         culture = new JLabel("Culture");
         resourceLabelOne = new JLabel("Stone");
+        money = new JLabel("Money");
+        resourceToMoney= new JButton("Resource to $");
         
         GridLayout layout2 = new GridLayout(8, 2);
         playerPanel.setLayout(layout2);
@@ -94,7 +101,8 @@ public class GameView extends JFrame {
         playerPanel.add(displayStoneLabel);
         playerPanel.add(displayHouseLabel);
         playerPanel.add(resourceLabelOne);
-      
+        playerPanel.add(money);
+        playerPanel.add(resourceToMoney);
      
       
             
@@ -104,6 +112,7 @@ public class GameView extends JFrame {
                   selectedStructure =new ImageIcon("stone_iron_mine.gif");
                   structureToAdd = new Structure("Stone Mine");
                   resourceToAdd = new Resource("Stone");
+                  
                 //  s1 = StructureCntl.getStructureCntl();
                  // s1.addStructure(structureToAdd);
                 }
@@ -132,10 +141,16 @@ public class GameView extends JFrame {
          displayHouseLabel.addMouseListener(new MouseListener() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
+                   
+                    controller= GameController.getGameController();
+                        if(controller.getMoney()>10){
                   selectedStructure =new ImageIcon("mud_house.gif");
                    structureToAdd = new Structure("Mud House");
-                   
-               
+                  
+                        }
+                
+                    
+              
                 }
 
                 @Override
@@ -186,11 +201,22 @@ public class GameView extends JFrame {
 
                     JLabel temp = (JLabel) e.getSource();
                     
+                    
+                    
+                    
+                     controller= GameController.getGameController();
+                    if(controller.getMoney()>=5){
+                   controller.decreaseMoney(5);
+                   updateMoneyLabel(controller.getMoney());
+                    
+                    
+                    
+                    
                     temp.setIcon(selectedStructure);
                     System.out.println("Pressed");
                     temp.validate();
                     temp.repaint();
-
+                    }
                 }
 
                 @Override
@@ -245,13 +271,23 @@ public class GameView extends JFrame {
           if(type.equals("Stone")){
             resourceLabelOne.setText("Stone "+amount);   
           }
-        /*  else if(type.equals("Copper")){
-              resourceLabelOne.setText("Copper "+amount);  
-          }
-          else if(type.equals("Iron")){
-              resourceLabelOne.setText("Iron"+ amount);
-          }
-          
-         */ 
+      }
+      
+      
+ 
+       public void addResourceListenerOne(ActionListener listener){
+        resourceToMoney.addActionListener(listener);
+      
+    }
+       
+      public void updateMoneyLabel(int wealth){
+          money.setText("Money "+wealth);
+      }
+      
+      public void setResourceAmount(int amountOfStone){
+         this.amountOfStone = amountOfStone;
+      }
+      public int getResourceAmount(){
+          return this.amountOfStone;
       }
 }

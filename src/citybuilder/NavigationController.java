@@ -30,6 +30,8 @@ public class NavigationController {
         public void actionPerformed(ActionEvent e){
   
             GameController gameC = new GameController(menuView.getUser(), 1);
+            gameC.setGameController(gameC);
+             
             menuView.setVisible(false);
         }
     }

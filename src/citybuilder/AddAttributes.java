@@ -41,15 +41,15 @@ Resource resource =new Resource("");
             culture.addCulture(1,3);
         }
         else if(s.getName().equals("Stone Mine")){
-            culture.addCulture(1, 1);
+           // culture.addCulture(1, 1);
             resource.addResource("Stone");
         }
         else if(s.getName().equals("Copper Mine")){
-            culture.addCulture(1, 2);
+           // culture.addCulture(1, 2);
             resource.addResource("Copper");
          }
         else if(s.getName().equals("Iron Mine")){
-            culture.addCulture(1, 3);
+          //  culture.addCulture(1, 3);
             resource.addResource("Iron");
           
          }
@@ -57,12 +57,12 @@ Resource resource =new Resource("");
    
    if(culture.getCulture()==10){
           GameController controller = new GameController("", 2);
-          
+          controller.setGameController(controller);
           
     }
-    if(culture.getCulture()==20){
+    if(culture.getCulture()==30){
         GameController controller = new GameController("", 3);
-        
+        controller.setGameController(controller);
     }
     }
 }

@@ -3,10 +3,12 @@ package citybuilder;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -35,20 +37,23 @@ public class GameViewTwo extends JFrame{
     JLabel displayStoneLabel;
     JLabel displayHouseLabel;
     //default
-    ImageIcon selectedStructure=new ImageIcon("house.gif");
-    Structure structureToAdd=new Structure("Wooden House");
+    ImageIcon selectedStructure=new ImageIcon("copper_mine.gif");
+    Structure structureToAdd=new Structure("Copper Mine");
     Resource resourceToAdd;
     
     ArrayList <Structure> s2;// = new ArrayList <Structure>();
     StructureCntl s1; // = new StructureCntl(s2);
     static GameViewTwo gameView;
     JLabel resourceLabelOne;
-   
-    Resource wealth;
-    Resource stone;
+
+    
+    JLabel money;
+    JButton resourceToMoney;
+    int amountOfCopper;
+     GameController controller;
      
     public GameViewTwo(String user) {
-
+        this.amountOfCopper=0;
         s2 = new ArrayList <Structure>();
         s1 = new StructureCntl(s2);
         
@@ -76,6 +81,10 @@ public class GameViewTwo extends JFrame{
 
         culture = new JLabel("Culture");
         resourceLabelOne = new JLabel("Copper");
+         money = new JLabel("Money");
+        resourceToMoney= new JButton("Resource to $");
+        
+        
         GridLayout layout2 = new GridLayout(8, 2);
         playerPanel.setLayout(layout2);
         
@@ -95,7 +104,8 @@ public class GameViewTwo extends JFrame{
         playerPanel.add(displayStoneLabel);
         playerPanel.add(displayHouseLabel);
         playerPanel.add(resourceLabelOne);
-     
+        playerPanel.add(money);
+        playerPanel.add(resourceToMoney);
      
       
             
@@ -133,9 +143,13 @@ public class GameViewTwo extends JFrame{
          displayHouseLabel.addMouseListener(new MouseListener() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
+                    
+                     controller= GameController.getGameController();
+                        if(controller.getMoney()>10){
+                    
                   selectedStructure =new ImageIcon("house.gif");
                    structureToAdd = new Structure("Wooden House");
-                   
+                        }
                    //s1 = StructureCntl.getStructureCntl();
                   //s1.addStructure(structureToAdd);
                 }
@@ -188,11 +202,20 @@ public class GameViewTwo extends JFrame{
 
                     JLabel temp = (JLabel) e.getSource();
                     
+                    
+                    
+                    
+                       
+                     controller= GameController.getGameController();
+                    if(controller.getMoney()>=5){
+                   controller.decreaseMoney(5);
+                   updateMoneyLabel(controller.getMoney());
+                    
                     temp.setIcon(selectedStructure);
                     System.out.println("Pressed");
                     temp.validate();
                     temp.repaint();
-
+                    }
                 }
 
                 @Override
@@ -246,6 +269,24 @@ public class GameViewTwo extends JFrame{
           
           resourceLabelOne.setText("Copper "+amount);
       
+      }
+      
+      public void addSecondResourceListener(ActionListener listener){
+        resourceToMoney.addActionListener(listener);
+      
+    }
+       
+      public void updateMoneyLabel(int wealth){
+          money.setText("Money "+wealth);
+      }
+      
+      public void setResourceAmount(int amountOfCopper){
+         this.amountOfCopper = amountOfCopper;
+          System.out.println("Made It");
+      }
+      public int getResourceAmount(){
+          return this.amountOfCopper;
+          
       }
 }
 

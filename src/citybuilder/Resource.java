@@ -12,52 +12,92 @@ package citybuilder;
 public class Resource {
     
     String name;
+    int amountOfStone;
+    int amountOfCopper;
+    int amountOfIron;
     int amount;
+    
     GameView view;
     GameViewTwo viewTwo;
     GameViewThree viewThree;
-    
+    int wealth;
+    static Resource resource;
     
     public Resource(String name){
         this.name = name;
-        this.amount = 0;
+        this.amountOfStone = 0;
+        this.amountOfCopper=0;
+        this.amountOfIron=0;
+        this.wealth=0;
     }
     
  
     
   public void addResource(String name){
+      
      if(name.equals("Stone")){
-         this.amount = this.amount+10;
+         this.amountOfStone = this.amountOfStone+10;
       view = GameView.getGameView();
-      view.updateResourceLabels( name, amount);
-      System.out.println(""+name+" "+ amount);
+      view.updateResourceLabels( name, amountOfStone);
+      view.setResourceAmount(amountOfStone);
+      
+      
          
       }
      
       else if(name.equals("Copper")){
-          this.amount= this.amount+10;
+          this.amountOfCopper= this.amountOfCopper+10;
               
       viewTwo = GameViewTwo.getGameView();
-      viewTwo.updateResourceLabels( name, amount);
-      System.out.println(""+name+" "+ amount);
+      viewTwo.updateResourceLabels( name, amountOfCopper);
+      viewTwo.setResourceAmount(amountOfCopper);
+      System.out.println(""+name+" "+ amountOfCopper);
       }
       
       else if(name.equals("Iron")){
-          this.amount= this.amount+10;
+          this.amountOfIron= this.amountOfIron+10;
               
       viewThree = GameViewThree.getGameView();
-      viewThree.updateResourceLabels( name, amount);
-     
+      viewThree.updateResourceLabels( name, amountOfIron);
+      viewThree.setResourceAmount(amountOfIron);
       }
       
       
       
   }
   
-  public int getResource(){
-      return amount;
+  public static Resource getResourceCurrent(){
+      return resource;
   }
- 
   
- 
+  public int getStone(){
+      return amountOfStone;
+  }
+ public int getCopper(){
+      return amountOfCopper;
+  }
+ public int getIron(){
+      return amountOfIron;
+  }
+ //added
+  public void setResourceAmount(int amount){
+      this.amount = amount;
+  }
+   public void setResource(Resource resource){
+          
+          this.resource = resource;
+      }
+      public static Resource getResource(){
+          return resource;
+      }
+      
+        public void decreaseStone(){
+      amountOfStone= amountOfStone-10;
+        }
+        public void decreaseCopper(){
+        amountOfCopper = amountOfCopper-10;
+        }
+        public void decreaseIron(){
+        amountOfIron = amountOfIron-10;
+        }
 }

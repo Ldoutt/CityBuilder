@@ -16,7 +16,7 @@ public class Structure {
     
     public Structure(String name){
         this.name = name;
-        //resource 
+      
     }
     
     public String getName(){

@@ -10,10 +10,12 @@ package citybuilder;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -42,8 +44,8 @@ public class GameViewThree extends JFrame{
     JLabel displayStoneLabel;
     JLabel displayHouseLabel;
     //default
-    ImageIcon selectedStructure=new ImageIcon("stone_house.gif");
-    Structure structureToAdd=new Structure("Stone House");
+    ImageIcon selectedStructure=new ImageIcon("iron_mine.gif");
+    Structure structureToAdd=new Structure("Iron Mine");
     Resource resourceToAdd;
     
     ArrayList <Structure> s2;// = new ArrayList <Structure>();
@@ -51,14 +53,18 @@ public class GameViewThree extends JFrame{
     static GameViewThree gameView;
     JLabel resourceLabelOne;
     
-    Resource wealth;
-    Resource stone;
+    JLabel money;
+    JButton resourceToMoney;
+    int amountOfIron;
+    GameController controller;
+    
      
     public GameViewThree(String user) {
-
+        this.amountOfIron =0;
         s2 = new ArrayList <Structure>();
         s1 = new StructureCntl(s2);
-        
+        money= new JLabel("Money ");
+        resourceToMoney= new JButton("Resource to $");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setTitle("Iron Age");
@@ -103,7 +109,8 @@ public class GameViewThree extends JFrame{
         playerPanel.add(displayStoneLabel);
         playerPanel.add(displayHouseLabel);
         playerPanel.add(resourceLabelOne);
-       
+       playerPanel.add(money);
+       playerPanel.add(resourceToMoney);
      
       
             
@@ -141,9 +148,13 @@ public class GameViewThree extends JFrame{
          displayHouseLabel.addMouseListener(new MouseListener() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
+                    
+                    
+                    controller= GameController.getGameController();
+                        if(controller.getMoney()>10){
                   selectedStructure =new ImageIcon("stone_house.gif");
                    structureToAdd = new Structure("Stone House");
-                   
+                        }
                    //s1 = StructureCntl.getStructureCntl();
                   //s1.addStructure(structureToAdd);
                 }
@@ -196,11 +207,19 @@ public class GameViewThree extends JFrame{
 
                     JLabel temp = (JLabel) e.getSource();
                     
+                    
+                    
+                       
+                   controller= GameController.getGameController();
+                    if(controller.getMoney()>=5){
+                   controller.decreaseMoney(5);
+                   updateMoneyLabel(controller.getMoney());
+                    
                     temp.setIcon(selectedStructure);
                     System.out.println("Pressed");
                     temp.validate();
                     temp.repaint();
-
+                    }
                 }
 
                 @Override
@@ -256,6 +275,21 @@ public class GameViewThree extends JFrame{
       
           
           
+      }
+             public void addResourceListenerThree(ActionListener listener){
+        resourceToMoney.addActionListener(listener);
+      
+    }
+       
+      public void updateMoneyLabel(int wealth){
+          money.setText("Money "+wealth);
+      }
+      
+      public void setResourceAmount(int amountOfIron){
+         this.amountOfIron = amountOfIron;
+      }
+      public int getResourceAmount(){
+          return this.amountOfIron;
       }
 }
 

@@ -17,6 +17,7 @@ Culture culture = new Culture();
 Resource resource =new Resource("");
 boolean oneTimeSwitch=false;
 boolean secondOneTimeSwitch=false;
+boolean thirdOneTimeSwitch = false;
 
  ArrayList <Structure> boardStuff;
     @Override
@@ -33,40 +34,48 @@ boolean secondOneTimeSwitch=false;
        
        System.out.println(s.getName());
         if(s.getName().equals("Mud House")){
-            culture.addCulture(1,1);
+            culture.addCulture(2,1);
         }
         else if(s.getName().equals("Wooden House")){
-            culture.addCulture(1,2);
+            culture.addCulture(3,2);
         }
         
         else if(s.getName().equals("Stone House")){
-            culture.addCulture(1,3);
+            culture.addCulture(4,3);
         }
         else if(s.getName().equals("Stone Mine")){
-           // culture.addCulture(1, 1);
+            culture.addCulture(1, 1);
             resource.addResource("Stone");
         }
         else if(s.getName().equals("Copper Mine")){
-           // culture.addCulture(1, 2);
+           culture.addCulture(2, 2);
             resource.addResource("Copper");
          }
         else if(s.getName().equals("Iron Mine")){
-          //  culture.addCulture(1, 3);
+            culture.addCulture(3, 3);
             resource.addResource("Iron");
           
          }
     }
    
-   if(culture.getCulture()>10& oneTimeSwitch==false){
+   if(culture.getCulture()>=30& oneTimeSwitch==false){
+       
           GameController controller = new GameController("", 2);
           controller.setGameController(controller);
           oneTimeSwitch=true;
           
     }
-    if(culture.getCulture()>40& secondOneTimeSwitch==false){
+    if(culture.getCulture()>=100& secondOneTimeSwitch==false){
+ 
         GameController controller = new GameController("", 3);
         controller.setGameController(controller);
         secondOneTimeSwitch=true;
+    }
+     if(culture.getCulture()>=300& thirdOneTimeSwitch==false){
+ 
+        GameController controller = new GameController("", 4);
+        controller.setGameController(controller);
+        thirdOneTimeSwitch=true;
     }
     }
 }

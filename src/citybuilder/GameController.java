@@ -24,6 +24,7 @@ public class GameController {
     Resource resource;
     int money;
     static GameController gameController;
+    private EndView endView;
 
  
  GameController(String user, int i){
@@ -36,7 +37,9 @@ public class GameController {
      
      
      money=10;
-      
+     
+     
+     
   if(i==1){
       
    Timer timer = new Timer(true);
@@ -51,8 +54,12 @@ public class GameController {
      }
          
    if(i==2){
+      
     gameViewTwo = new GameViewTwo(user);
     gameViewTwo.setVisible(true); 
+   
+    
+
     gameViewTwo.setGameView(this.gameViewTwo); 
     gameViewTwo.addSecondResourceListener(new ResourceToMoneyListenerTwo());
     gameViewTwo.updateMoneyLabel(10);
@@ -61,12 +68,16 @@ public class GameController {
    else if(i==3){
 
     gameViewThree = new GameViewThree(user);
+   
     gameViewThree.setVisible(true);
     gameViewThree.setGameView(this.gameViewThree);
     gameViewThree.addResourceListenerThree(new ResourceToMoneyListenerThree());
     gameViewThree.updateMoneyLabel(10);
    }  
- 
+   else if(i==4){
+       endView = new EndView();
+       endView.setVisible(true);
+   }
  
     }
 

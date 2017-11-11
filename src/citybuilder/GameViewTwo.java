@@ -34,7 +34,7 @@ public class GameViewTwo extends JFrame{
     JLabel culture;
     
     ImageIcon copperMine = new ImageIcon("copper_mine.gif");
-    JLabel displayStoneLabel;
+    JLabel displayCopperLabel;
     JLabel displayHouseLabel;
     //default
     ImageIcon selectedStructure=new ImageIcon("copper_mine.gif");
@@ -49,9 +49,10 @@ public class GameViewTwo extends JFrame{
     
     JLabel money;
     JButton resourceToMoney;
-    int amountOfCopper;
+    int amountOfCopper=0;
      GameController controller;
-     
+      int moneyDecrease;
+      
     public GameViewTwo(String user) {
         this.amountOfCopper=0;
         s2 = new ArrayList <Structure>();
@@ -74,7 +75,7 @@ public class GameViewTwo extends JFrame{
 
         this.add(playerPanel);
         this.add(gamePanel);
-        
+         moneyDecrease=0;
         
     
        displayUserLabel= new JLabel("Welcome "+user);
@@ -95,13 +96,13 @@ public class GameViewTwo extends JFrame{
 
         playerPanel.setBackground(Color.pink);
         
-        displayStoneLabel = new JLabel();
-        displayStoneLabel.setIcon(copperMine);
+        displayCopperLabel = new JLabel();
+        displayCopperLabel.setIcon(copperMine);
         
         displayHouseLabel = new JLabel();
         displayHouseLabel.setIcon(house);
         
-        playerPanel.add(displayStoneLabel);
+        playerPanel.add(displayCopperLabel);
         playerPanel.add(displayHouseLabel);
         playerPanel.add(resourceLabelOne);
         playerPanel.add(money);
@@ -109,7 +110,7 @@ public class GameViewTwo extends JFrame{
      
       
             
-            displayStoneLabel.addMouseListener(new MouseListener() {
+            displayCopperLabel.addMouseListener(new MouseListener() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
                   selectedStructure =new ImageIcon("copper_mine.gif");
@@ -117,6 +118,7 @@ public class GameViewTwo extends JFrame{
                   resourceToAdd = new Resource("Copper");
                 //  s1 = StructureCntl.getStructureCntl();
                  // s1.addStructure(structureToAdd);
+                  moneyDecrease=5;
                 }
 
                 @Override
@@ -145,15 +147,16 @@ public class GameViewTwo extends JFrame{
                 public void mouseClicked(MouseEvent e) {
                     
                      controller= GameController.getGameController();
-                        if(controller.getMoney()>10){
+                        if(controller.getMoney()>15){
                     
                   selectedStructure =new ImageIcon("house.gif");
                    structureToAdd = new Structure("Wooden House");
-                        }
+                        
                    //s1 = StructureCntl.getStructureCntl();
                   //s1.addStructure(structureToAdd);
+              moneyDecrease=15;
                 }
-
+                }
                 @Override
                 public void mouseExited(MouseEvent e) {
 
@@ -204,12 +207,16 @@ public class GameViewTwo extends JFrame{
                     
                     
                     
+                    controller= GameController.getGameController();
+                    if(controller.getMoney()>=moneyDecrease){
                     
-                       
-                     controller= GameController.getGameController();
-                    if(controller.getMoney()>=5){
-                   controller.decreaseMoney(5);
+                        
+                   controller.decreaseMoney(moneyDecrease);
+                        System.out.println("DECREASE MONEY");
                    updateMoneyLabel(controller.getMoney());
+                    
+                    
+                    
                     
                     temp.setIcon(selectedStructure);
                     System.out.println("Pressed");

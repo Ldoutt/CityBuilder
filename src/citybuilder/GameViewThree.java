@@ -36,12 +36,12 @@ public class GameViewThree extends JFrame{
     String userName;
     JPanel playerPanel;
     JPanel gamePanel;
-    ImageIcon house = new ImageIcon("stone_house.gif");
+    ImageIcon house = new ImageIcon("stone_house.png");
     JLabel displayUserLabel;
     JLabel culture;
     
     ImageIcon copperMine = new ImageIcon("iron_mine.gif");
-    JLabel displayStoneLabel;
+    JLabel displayIronLabel;
     JLabel displayHouseLabel;
     //default
     ImageIcon selectedStructure=new ImageIcon("iron_mine.gif");
@@ -55,9 +55,9 @@ public class GameViewThree extends JFrame{
     
     JLabel money;
     JButton resourceToMoney;
-    int amountOfIron;
+    int amountOfIron=0;
     GameController controller;
-    
+     int moneyDecrease;
      
     public GameViewThree(String user) {
         this.amountOfIron =0;
@@ -92,7 +92,7 @@ public class GameViewThree extends JFrame{
         resourceLabelOne = new JLabel("Iron");
         GridLayout layout2 = new GridLayout(8, 2);
         playerPanel.setLayout(layout2);
-        
+         moneyDecrease=0;
         
         
         playerPanel.add(culture);
@@ -100,13 +100,13 @@ public class GameViewThree extends JFrame{
 
         playerPanel.setBackground(Color.green);
         
-        displayStoneLabel = new JLabel();
-        displayStoneLabel.setIcon(copperMine);
+        displayIronLabel = new JLabel();
+        displayIronLabel.setIcon(copperMine);
         
         displayHouseLabel = new JLabel();
         displayHouseLabel.setIcon(house);
         
-        playerPanel.add(displayStoneLabel);
+        playerPanel.add(displayIronLabel);
         playerPanel.add(displayHouseLabel);
         playerPanel.add(resourceLabelOne);
        playerPanel.add(money);
@@ -114,7 +114,7 @@ public class GameViewThree extends JFrame{
      
       
             
-            displayStoneLabel.addMouseListener(new MouseListener() {
+            displayIronLabel.addMouseListener(new MouseListener() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
                   selectedStructure =new ImageIcon("iron_mine.gif");
@@ -122,6 +122,7 @@ public class GameViewThree extends JFrame{
                   resourceToAdd = new Resource("Iron");
                 //  s1 = StructureCntl.getStructureCntl();
                  // s1.addStructure(structureToAdd);
+                  moneyDecrease=5;
                 }
 
                 @Override
@@ -152,8 +153,9 @@ public class GameViewThree extends JFrame{
                     
                     controller= GameController.getGameController();
                         if(controller.getMoney()>10){
-                  selectedStructure =new ImageIcon("stone_house.gif");
+                  selectedStructure =new ImageIcon("stone_house.png");
                    structureToAdd = new Structure("Stone House");
+                   moneyDecrease=15;
                         }
                    //s1 = StructureCntl.getStructureCntl();
                   //s1.addStructure(structureToAdd);
@@ -210,10 +212,15 @@ public class GameViewThree extends JFrame{
                     
                     
                        
-                   controller= GameController.getGameController();
-                    if(controller.getMoney()>=5){
-                   controller.decreaseMoney(5);
+                    controller= GameController.getGameController();
+                    if(controller.getMoney()>=moneyDecrease){
+                    
+                        
+                   controller.decreaseMoney(moneyDecrease);
                    updateMoneyLabel(controller.getMoney());
+                    
+                    
+                    
                     
                     temp.setIcon(selectedStructure);
                     System.out.println("Pressed");

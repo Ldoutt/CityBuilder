@@ -47,8 +47,10 @@ public class GameView extends JFrame {
     Resource stone;
     JLabel money;
     JButton resourceToMoney;
-    int amountOfStone;
+    int amountOfStone=0;
     GameController controller;
+    int moneyDecrease;
+
      
     public GameView(String user) {
         this.amountOfStone=0;
@@ -73,7 +75,7 @@ public class GameView extends JFrame {
         this.add(playerPanel);
         this.add(gamePanel);
         
-        
+        moneyDecrease=0;
     
        displayUserLabel= new JLabel("Welcome "+user);
 
@@ -81,6 +83,7 @@ public class GameView extends JFrame {
         resourceLabelOne = new JLabel("Stone");
         money = new JLabel("Money");
         resourceToMoney= new JButton("Resource to $");
+       
         
         GridLayout layout2 = new GridLayout(8, 2);
         playerPanel.setLayout(layout2);
@@ -98,13 +101,16 @@ public class GameView extends JFrame {
         displayHouseLabel = new JLabel();
         displayHouseLabel.setIcon(house);
         
+ 
+
+ 
         playerPanel.add(displayStoneLabel);
         playerPanel.add(displayHouseLabel);
         playerPanel.add(resourceLabelOne);
         playerPanel.add(money);
         playerPanel.add(resourceToMoney);
-     
-      
+        
+        
             
             displayStoneLabel.addMouseListener(new MouseListener() {
                 @Override
@@ -112,7 +118,7 @@ public class GameView extends JFrame {
                   selectedStructure =new ImageIcon("stone_iron_mine.gif");
                   structureToAdd = new Structure("Stone Mine");
                   resourceToAdd = new Resource("Stone");
-                  
+                  moneyDecrease=5;
                 //  s1 = StructureCntl.getStructureCntl();
                  // s1.addStructure(structureToAdd);
                 }
@@ -143,10 +149,10 @@ public class GameView extends JFrame {
                 public void mouseClicked(MouseEvent e) {
                    
                     controller= GameController.getGameController();
-                        if(controller.getMoney()>10){
+                        if(controller.getMoney()>15){
                   selectedStructure =new ImageIcon("mud_house.gif");
                    structureToAdd = new Structure("Mud House");
-                  
+                  moneyDecrease=15;
                         }
                 
                     
@@ -205,14 +211,17 @@ public class GameView extends JFrame {
                     
                     
                      controller= GameController.getGameController();
-                    if(controller.getMoney()>=5){
-                   controller.decreaseMoney(5);
+                    if(controller.getMoney()>=moneyDecrease){
+                    
+                        
+                   controller.decreaseMoney(moneyDecrease);
                    updateMoneyLabel(controller.getMoney());
                     
                     
                     
                     
                     temp.setIcon(selectedStructure);
+                    
                     System.out.println("Pressed");
                     temp.validate();
                     temp.repaint();

@@ -36,8 +36,10 @@ public class Resource {
   public void addResource(String name){
       
      if(name.equals("Stone")){
+         
          this.amountOfStone = this.amountOfStone+10;
       view = GameView.getGameView();
+     this.amountOfStone= view.getResourceAmount()+10;
       view.updateResourceLabels( name, amountOfStone);
       view.setResourceAmount(amountOfStone);
       
@@ -49,6 +51,7 @@ public class Resource {
           this.amountOfCopper= this.amountOfCopper+10;
               
       viewTwo = GameViewTwo.getGameView();
+      this.amountOfCopper= viewTwo.getResourceAmount()+10;
       viewTwo.updateResourceLabels( name, amountOfCopper);
       viewTwo.setResourceAmount(amountOfCopper);
       System.out.println(""+name+" "+ amountOfCopper);
@@ -58,6 +61,7 @@ public class Resource {
           this.amountOfIron= this.amountOfIron+10;
               
       viewThree = GameViewThree.getGameView();
+      this.amountOfIron= viewThree.getResourceAmount()+10;
       viewThree.updateResourceLabels( name, amountOfIron);
       viewThree.setResourceAmount(amountOfIron);
       }

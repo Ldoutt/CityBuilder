@@ -51,7 +51,7 @@ public class GameViewTwo extends JFrame{
     JButton resourceToMoney;
     int amountOfCopper=0;
      GameController controller;
-      int moneyDecrease;
+      int moneyDecrease=5;
       
     public GameViewTwo(String user) {
         this.amountOfCopper=0;
@@ -75,7 +75,7 @@ public class GameViewTwo extends JFrame{
 
         this.add(playerPanel);
         this.add(gamePanel);
-         moneyDecrease=0;
+         
         
     
        displayUserLabel= new JLabel("Welcome "+user);

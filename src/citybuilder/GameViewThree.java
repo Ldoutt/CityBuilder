@@ -57,7 +57,7 @@ public class GameViewThree extends JFrame{
     JButton resourceToMoney;
     int amountOfIron=0;
     GameController controller;
-     int moneyDecrease;
+     int moneyDecrease=5;
      
     public GameViewThree(String user) {
         this.amountOfIron =0;
@@ -92,7 +92,7 @@ public class GameViewThree extends JFrame{
         resourceLabelOne = new JLabel("Iron");
         GridLayout layout2 = new GridLayout(8, 2);
         playerPanel.setLayout(layout2);
-         moneyDecrease=0;
+      
         
         
         playerPanel.add(culture);
@@ -117,12 +117,13 @@ public class GameViewThree extends JFrame{
             displayIronLabel.addMouseListener(new MouseListener() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
+                  moneyDecrease=5;
                   selectedStructure =new ImageIcon("iron_mine.gif");
                   structureToAdd = new Structure("Iron Mine");
                   resourceToAdd = new Resource("Iron");
                 //  s1 = StructureCntl.getStructureCntl();
                  // s1.addStructure(structureToAdd);
-                  moneyDecrease=5;
+                 
                 }
 
                 @Override
@@ -216,9 +217,9 @@ public class GameViewThree extends JFrame{
                     if(controller.getMoney()>=moneyDecrease){
                     
                         
-                   controller.decreaseMoney(moneyDecrease);
+                  controller.decreaseMoney(moneyDecrease);
+                        System.out.println("DECREASE MONEY");
                    updateMoneyLabel(controller.getMoney());
-                    
                     
                     
                     

@@ -49,7 +49,7 @@ public class GameView extends JFrame {
     JButton resourceToMoney;
     int amountOfStone=0;
     GameController controller;
-    int moneyDecrease;
+    int moneyDecrease=5;
 
      
     public GameView(String user) {
@@ -75,7 +75,7 @@ public class GameView extends JFrame {
         this.add(playerPanel);
         this.add(gamePanel);
         
-        moneyDecrease=0;
+        
     
        displayUserLabel= new JLabel("Welcome "+user);
 

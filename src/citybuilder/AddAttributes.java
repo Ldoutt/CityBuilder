@@ -58,20 +58,20 @@ boolean thirdOneTimeSwitch = false;
          }
     }
    
-   if(culture.getCulture()>=30& oneTimeSwitch==false){
+   if(culture.getCulture()>=50& oneTimeSwitch==false){
        
           GameController controller = new GameController("", 2);
           controller.setGameController(controller);
           oneTimeSwitch=true;
           
     }
-    if(culture.getCulture()>=100& secondOneTimeSwitch==false){
+    if(culture.getCulture()>=200& secondOneTimeSwitch==false){
  
         GameController controller = new GameController("", 3);
         controller.setGameController(controller);
         secondOneTimeSwitch=true;
     }
-     if(culture.getCulture()>=300& thirdOneTimeSwitch==false){
+     if(culture.getCulture()>=400& thirdOneTimeSwitch==false){
  
         GameController controller = new GameController("", 4);
         controller.setGameController(controller);

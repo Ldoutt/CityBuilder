@@ -10,16 +10,17 @@ package citybuilder;
  * @author Lauren
  */
 public class Structure {
+
     String name;
     Resource resource;
     String resourceName;
-    
-    public Structure(String name){
+
+    public Structure(String name) {
         this.name = name;
-      
+
     }
-    
-    public String getName(){
+
+    public String getName() {
         return name;
     }
 }

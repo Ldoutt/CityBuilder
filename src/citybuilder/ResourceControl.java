@@ -12,10 +12,10 @@ import java.util.ArrayList;
  * @author Lauren
  */
 public class ResourceControl {
-    
-    ArrayList <Resource> resourceList = new ArrayList<>();
-    
-    public ResourceControl(){
+
+    ArrayList<Resource> resourceList = new ArrayList<>();
+
+    public ResourceControl() {
         this.resourceList = resourceList;
     }
 }

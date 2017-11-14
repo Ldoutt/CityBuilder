@@ -31,25 +31,19 @@ public class MenuView extends JFrame{
     JLabel instructionBodyThree;
      JLabel instructionBodyFour;
       JLabel instructionBodyFive;
-    
+     JLabel instructionBodySix;
+     JLabel instructionBodySeven;
     public MenuView(){
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setTitle("Main Menu");
         this.setSize(new Dimension(700, 700));
-        //this.setLayout(null);
         
                 
-        menuPanel = new JPanel();
-      
-      
-        
+        menuPanel = new JPanel();  
         this.add(menuPanel);
                 
-        
-        
-        
         startButton = new JButton("Start Game");
         titleOfGame = new JLabel();
         titleOfGame.setIcon(title);
@@ -60,30 +54,23 @@ public class MenuView extends JFrame{
         instructionBodyThree= new JLabel( " Then you can purchase houses. Each structure you purchase gains you culture."+'\n');
         instructionBodyFour = new JLabel("Houses Cost $15 and give you 2 pts of Culture. ");
          instructionBodyFive = new JLabel("Mines Cost $5 and give you 1 pt of Culture. ");
-       
-        //instructions=new JDialog(this,"Instructions for City Builder: " ,true);
-          
+         instructionBodySix= new JLabel("Structures convey more culture at higher ages. ");
+  
         menuPanel.add(titleOfGame);
         menuPanel.add(instructionBody);
         menuPanel.add(instructionBodyTwo);
         menuPanel.add(instructionBodyThree);
         menuPanel.add(instructionBodyFour);
         menuPanel.add(instructionBodyFive);
+        menuPanel.add(instructionBodySix);
         
         menuPanel.add(startButton);
         menuPanel.add(userNameField);
         
-       // instructions.add(instructionBody);
-       // instructions.add(instructionBodyTwo);
-       // instructions.add(instructionBodyThree);
-       // instructions.setSize(1000,1000);
-       // instructions.setVisible(true);
-           
     }
     
     public void addStartButtonListener(ActionListener listener){
         startButton.addActionListener(listener);
-      //  System.out.println("reahced");
     }
 
  

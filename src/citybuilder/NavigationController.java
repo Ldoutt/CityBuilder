@@ -13,28 +13,29 @@ import java.awt.event.ActionListener;
  * @author Lauren
  */
 public class NavigationController {
+
     private String user;
     private MenuView menuView;
     private GameView gameView;
-    
-    
-    public NavigationController(){
+
+    public NavigationController() {
         this.menuView = new MenuView();
         menuView.addStartButtonListener(new StartListener());
         menuView.setVisible(true);
-        
+
     }
-    private class StartListener implements ActionListener{
+
+    private class StartListener implements ActionListener {
+
         @Override
-        
-        public void actionPerformed(ActionEvent e){
-  
+
+        public void actionPerformed(ActionEvent e) {
+
             GameController gameC = new GameController(menuView.getUser(), 1);
             gameC.setGameController(gameC);
-             
+
             menuView.setVisible(false);
         }
     }
-    
-   
+
 }

@@ -15,25 +15,23 @@ import javax.swing.JPanel;
  *
  * @author Lauren
  */
-public class EndView extends JFrame{
-    
+public class EndView extends JFrame {
+
     JPanel endPanel;
     JLabel endLabel;
     ImageIcon end = new ImageIcon("gameover.png");
-    public EndView(){
-        
-    
-       this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+    public EndView() {
+
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setTitle("End Game");
         this.setSize(new Dimension(500, 500));
-        //this.setLayout(null);
-        
-                
-        endPanel = new JPanel(); 
+
+        endPanel = new JPanel();
         this.add(endPanel);
         endLabel = new JLabel();
         endLabel.setIcon(end);
         endPanel.add(endLabel);
-}
+    }
 }

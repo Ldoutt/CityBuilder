@@ -12,37 +12,33 @@ import java.util.ArrayList;
  * @author Lauren
  */
 public class StructureCntl {
-   
-    private ArrayList <Structure> structures;
+
+    private ArrayList<Structure> structures;
     private static StructureCntl structureCntl;
-  
-    public StructureCntl(ArrayList <Structure> structures){
+
+    public StructureCntl(ArrayList<Structure> structures) {
         this.structures = structures;
-     
+
     }
-  
-    
-    
-    
-    public void addStructure(Structure addStructure){
+
+    public void addStructure(Structure addStructure) {
         structures.add(addStructure);
-//        System.out.println(addStructure.getName());
     }
-    
-    public ArrayList <Structure> getStructureList(){
-        /*if(structures==null){
-            structures = new ArrayList <Structure>();
-        }*/
-        
+
+    public ArrayList<Structure> getStructureList() {
         return structures;
     }
-    
-    public static StructureCntl getStructureCntl(){
-        if(structureCntl ==null){
-           StructureCntl.structureCntl = new StructureCntl(new ArrayList <Structure>());         
+
+    public static StructureCntl getStructureCntl() {
+        if (structureCntl == null) {
+            StructureCntl.structureCntl = new StructureCntl(new ArrayList<Structure>());
         }
-        
+
         return structureCntl;
     }
-    
+
+    public void resetStructureArray() {
+        structures = new ArrayList<Structure>();
+    }
+
 }

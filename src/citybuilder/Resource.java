@@ -37,8 +37,8 @@ public class Resource {
       
      if(name.equals("Stone")){
          
-         this.amountOfStone = this.amountOfStone+10;
-      view = GameView.getGameView();
+      this.amountOfStone = this.amountOfStone+10;
+     view = GameView.getGameView();
      this.amountOfStone= view.getResourceAmount()+10;
       view.updateResourceLabels( name, amountOfStone);
       view.setResourceAmount(amountOfStone);

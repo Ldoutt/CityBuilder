@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
+import javax.swing.JFrame;
 
 /**
  *
@@ -28,7 +29,9 @@ public class GameController {
 
  
  GameController(String user, int i){
-
+     gameView = new GameView(user);
+     gameViewTwo = new GameViewTwo(user);
+     gameViewThree = new GameViewThree(user);        
      this.culture = culture;
      
     
@@ -46,7 +49,7 @@ public class GameController {
    TimerTask myTimerTask = new AddAttributes();
       
    timer.scheduleAtFixedRate(myTimerTask, 0, 5*1000); 
-    gameView = new GameView(user);
+    //gameView = new GameView(user);
     gameView.setVisible(true);
     gameView.setGameView(this.gameView);
     gameView.addResourceListenerOne(new ResourceToMoneyListener());
@@ -54,20 +57,22 @@ public class GameController {
      }
          
    if(i==2){
-      
-    gameViewTwo = new GameViewTwo(user);
-    gameViewTwo.setVisible(true); 
+   gameView= GameView.getGameView();
+   gameView.setVisible(false);
    
-    
-
+   
+    //gameViewTwo = new GameViewTwo(user);
+    gameViewTwo.setVisible(true); 
     gameViewTwo.setGameView(this.gameViewTwo); 
     gameViewTwo.addSecondResourceListener(new ResourceToMoneyListenerTwo());
     gameViewTwo.updateMoneyLabel(10);
     }
     
    else if(i==3){
-
-    gameViewThree = new GameViewThree(user);
+    gameViewTwo= GameViewTwo.getGameView();
+    gameViewTwo.setVisible(false);
+    
+   
    
     gameViewThree.setVisible(true);
     gameViewThree.setGameView(this.gameViewThree);
@@ -75,6 +80,8 @@ public class GameController {
     gameViewThree.updateMoneyLabel(10);
    }  
    else if(i==4){
+       gameViewThree = GameViewThree.getGameView();
+       gameViewThree.setVisible(false);
        endView = new EndView();
        endView.setVisible(true);
    }
@@ -131,13 +138,14 @@ public class GameController {
           int amount = gameViewThree.getResourceAmount();
             System.out.println(amount);
             System.out.println("Change Resource to Money");
+             if(amount>10){
           money = addMoney(money);//resource.switchResourceForWealth();
           
           gameViewThree.updateMoneyLabel(money); 
           amount= amount-10;
           gameViewThree.updateResourceLabels("Iron", amount);
           gameViewThree.setResourceAmount(amount);
-       
+             }
         }
     }   
     

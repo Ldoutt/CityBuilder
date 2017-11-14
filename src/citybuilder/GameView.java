@@ -189,7 +189,8 @@ public class GameView extends JFrame {
 
         for (int i = 0; i < 25; i++) {
 
-            gridLabels[i] = new JLabel("Label: " + i);
+            gridLabels[i] = new JLabel("-----");
+        //("Label: " + i);
 
             gamePanel.add(gridLabels[i]);
 

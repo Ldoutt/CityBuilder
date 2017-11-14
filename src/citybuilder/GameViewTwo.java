@@ -187,7 +187,8 @@ public class GameViewTwo extends JFrame{
 
         for (int i = 0; i < 25; i++) {
 
-            gridLabels[i] = new JLabel("Label: " + i);
+            gridLabels[i] = new JLabel("----");
+        //("Label: " + i);
 
             gamePanel.add(gridLabels[i]);
 
@@ -289,7 +290,6 @@ public class GameViewTwo extends JFrame{
       
       public void setResourceAmount(int amountOfCopper){
          this.amountOfCopper = amountOfCopper;
-          System.out.println("Made It");
       }
       public int getResourceAmount(){
           return this.amountOfCopper;

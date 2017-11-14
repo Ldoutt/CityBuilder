@@ -203,9 +203,7 @@ public class GameViewThree extends JFrame{
                     
                    // StructureCntl structurecntl;
                     //structurecntl
-                    s1= StructureCntl.getStructureCntl();
-                    //structurecntl
-                    s1.addStructure(structureToAdd);
+                   
                     
                     System.out.println("mouse clicked");
 
@@ -216,6 +214,9 @@ public class GameViewThree extends JFrame{
                        
                     controller= GameController.getGameController();
                     if(controller.getMoney()>=moneyDecrease){
+                    s1= StructureCntl.getStructureCntl();
+                    //structurecntl
+                    s1.addStructure(structureToAdd);
                     
                         
                   controller.decreaseMoney(moneyDecrease);

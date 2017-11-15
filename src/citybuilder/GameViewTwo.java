@@ -43,10 +43,12 @@ public class GameViewTwo extends JFrame {
     StructureCntl s1; 
     static GameViewTwo gameView;
     JLabel resourceLabelOne;
+    JLabel resourceLabelTwo;
 
     JLabel money;
     JButton resourceToMoney;
     int amountOfCopper = 0;
+    int amountOfBeef = 0;
     GameController controller;
     int moneyDecrease = 5;
 
@@ -77,6 +79,7 @@ public class GameViewTwo extends JFrame {
 
         culture = new JLabel("Culture");
         resourceLabelOne = new JLabel("Copper");
+        resourceLabelTwo = new JLabel("Beef");
         money = new JLabel("Money");
         resourceToMoney = new JButton("Resource to $");
 
@@ -97,6 +100,7 @@ public class GameViewTwo extends JFrame {
         playerPanel.add(displayCopperLabel);
         playerPanel.add(displayHouseLabel);
         playerPanel.add(resourceLabelOne);
+        playerPanel.add(resourceLabelTwo);
         playerPanel.add(money);
         playerPanel.add(resourceToMoney);
 
@@ -248,9 +252,12 @@ public class GameViewTwo extends JFrame {
     }
 
     public void updateResourceLabels(String type, int amount) {
-
+        if (type.equals("Copper")) {
         resourceLabelOne.setText("Copper " + amount);
-
+        }
+        else if (type.equals("Beef")) {
+            resourceLabelTwo.setText("Beef " + amount);
+        }
     }
 
     public void addSecondResourceListener(ActionListener listener) {
@@ -262,12 +269,25 @@ public class GameViewTwo extends JFrame {
         money.setText("Money " + wealth);
     }
 
-    public void setResourceAmount(int amountOfCopper) {
-        this.amountOfCopper = amountOfCopper;
+    public void setResourceAmount(String type, int amount) {
+        if (type.equals("Copper")) {
+        this.amountOfCopper = amount;
+        }
+        else if (type.equals("Beef")) {
+            this.amountOfBeef = amount;
+        }
     }
 
-    public int getResourceAmount() {
-        return this.amountOfCopper;
+    public int getResourceAmount(String type) {
+     int rv = 0;
+     
+        if (type.equals("Copper")) {
+            rv = this.amountOfCopper;
+        }
+        else if (type.equals("Beef")) {
+            rv = this.amountOfBeef;
+        }
 
+        return rv;
     }
 }

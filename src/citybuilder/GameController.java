@@ -97,7 +97,7 @@ public class GameController {
 
         public void actionPerformed(ActionEvent e) {
 
-            int amount = gameView.getResourceAmount();
+            int amount = gameView.getResourceAmount("Stone");
 
             if (amount >= 10) {
 
@@ -105,7 +105,7 @@ public class GameController {
                 gameView.updateMoneyLabel(money);
                 amount = amount - 10;
                 gameView.updateResourceLabels("Stone", amount);
-                gameView.setResourceAmount(amount);
+                gameView.setResourceAmount("Stone", amount);
             }
         }
     }
@@ -116,13 +116,13 @@ public class GameController {
 
         public void actionPerformed(ActionEvent e) {
 
-            int amount = gameViewTwo.getResourceAmount();
+            int amount = gameViewTwo.getResourceAmount("Copper");
             if (amount >= 10) {
                 money = addMoney(money);//resource.switchResourceForWealth();
                 gameViewTwo.updateMoneyLabel(money);
                 amount = amount - 10;
                 gameViewTwo.updateResourceLabels("Copper", amount);
-                gameViewTwo.setResourceAmount(amount);
+                gameViewTwo.setResourceAmount("Copper", amount);
 
             }
 
@@ -135,14 +135,14 @@ public class GameController {
 
         public void actionPerformed(ActionEvent e) {
 
-            int amount = gameViewThree.getResourceAmount();
+            int amount = gameViewThree.getResourceAmount("Iron");
             if (amount >= 10) {
                 money = addMoney(money);//resource.switchResourceForWealth();
 
                 gameViewThree.updateMoneyLabel(money);
                 amount = amount - 10;
                 gameViewThree.updateResourceLabels("Iron", amount);
-                gameViewThree.setResourceAmount(amount);
+                gameViewThree.setResourceAmount("Iron", amount);
             }
         }
     }

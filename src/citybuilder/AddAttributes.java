@@ -37,12 +37,15 @@ public class AddAttributes extends TimerTask {
             switch (s.getName()) {
                 case "Mud House":
                     culture.addCulture(2, 1);
+                    resource.addResource("Bread");
                     break;
                 case "Wooden House":
                     culture.addCulture(3, 2);
+                    resource.addResource("Beef");
                     break;
                 case "Stone House":
                     culture.addCulture(4, 3);
+                    resource.addResource("Beer");
                     break;
                 case "Stone Mine":
                     culture.addCulture(1, 1);

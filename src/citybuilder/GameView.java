@@ -43,11 +43,14 @@ public class GameView extends JFrame {
     static GameView gameView;
     JLabel resourceLabelOne;
     JLabel resourceLabelTwo;
+    JLabel resourceLabelThree;
 
     Resource stone;
+    Resource bread;
     JLabel money;
     JButton resourceToMoney;
     int amountOfStone = 0;
+    int amountOfBread = 0;
     GameController controller;
     int moneyDecrease = 5;
 
@@ -78,6 +81,7 @@ public class GameView extends JFrame {
 
         culture = new JLabel("Culture");
         resourceLabelOne = new JLabel("Stone");
+        resourceLabelThree = new JLabel("Bread");
         money = new JLabel("Money");
         resourceToMoney = new JButton("Resource to $");
 
@@ -98,6 +102,7 @@ public class GameView extends JFrame {
         playerPanel.add(displayStoneLabel);
         playerPanel.add(displayHouseLabel);
         playerPanel.add(resourceLabelOne);
+        playerPanel.add(resourceLabelThree);
         playerPanel.add(money);
         playerPanel.add(resourceToMoney);
 
@@ -252,6 +257,9 @@ public class GameView extends JFrame {
         if (type.equals("Stone")) {
             resourceLabelOne.setText("Stone " + amount);
         }
+        else if (type.equals("Bread")) { 
+            resourceLabelThree.setText("Bread " + amount);
+        }
     }
 
     public void addResourceListenerOne(ActionListener listener) {
@@ -263,11 +271,26 @@ public class GameView extends JFrame {
         money.setText("Money " + wealth);
     }
 
-    public void setResourceAmount(int amountOfStone) {
-        this.amountOfStone = amountOfStone;
+    public void setResourceAmount(String type, int amount) {
+        if (type.equals("Stone")) {
+            this.amountOfStone = amount;
+        }
+        else if (type.equals("Bread")) {
+            this.amountOfBread = amount;
+        }
+        
     }
 
-    public int getResourceAmount() {
-        return this.amountOfStone;
+    public int getResourceAmount(String type) {
+    int returnVal = 0;
+    
+        if (type.equals("Stone")) {
+            returnVal = this.amountOfStone;
+        }
+        else if (type.equals("Bread")) {
+            returnVal = this.amountOfBread;
+        }
+        
+        return returnVal;
     }
 }

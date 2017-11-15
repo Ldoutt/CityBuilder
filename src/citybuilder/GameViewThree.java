@@ -48,10 +48,12 @@ public class GameViewThree extends JFrame {
     StructureCntl s1; // = new StructureCntl(s2);
     static GameViewThree gameView;
     JLabel resourceLabelOne;
+    JLabel resourceLabelTwo;
 
     JLabel money;
     JButton resourceToMoney;
     int amountOfIron = 0;
+    int amountOfBeer = 0;
     GameController controller;
     int moneyDecrease = 5;
 
@@ -84,6 +86,7 @@ public class GameViewThree extends JFrame {
         culture = new JLabel("Culture");
 
         resourceLabelOne = new JLabel("Iron");
+        resourceLabelTwo = new JLabel("Beer");
         GridLayout layout2 = new GridLayout(8, 2);
         playerPanel.setLayout(layout2);
 
@@ -101,6 +104,7 @@ public class GameViewThree extends JFrame {
         playerPanel.add(displayIronLabel);
         playerPanel.add(displayHouseLabel);
         playerPanel.add(resourceLabelOne);
+        playerPanel.add(resourceLabelTwo);
         playerPanel.add(money);
         playerPanel.add(resourceToMoney);
 
@@ -251,8 +255,12 @@ public class GameViewThree extends JFrame {
     }
 
     public void updateResourceLabels(String type, int amount) {
-
+        if (type.equals("Iron")) {
         resourceLabelOne.setText("Iron " + amount);
+        }
+        else if (type.equals("Beer")) {
+            resourceLabelTwo.setText("Beer " + amount);
+        }
 
     }
 
@@ -265,11 +273,25 @@ public class GameViewThree extends JFrame {
         money.setText("Money " + wealth);
     }
 
-    public void setResourceAmount(int amountOfIron) {
-        this.amountOfIron = amountOfIron;
+    public void setResourceAmount(String type, int amount) {
+        if (type.equals("Iron")) {
+        this.amountOfIron = amount;
+        }
+        else if (type.equals("Beer")) {
+            this.amountOfBeer = amount;
+        }
+       
     }
 
-    public int getResourceAmount() {
-        return this.amountOfIron;
+    public int getResourceAmount(String type) {
+    int rv = 0;
+    
+        if (type.equals("Iron")) {
+            rv = this.amountOfIron;
+        }
+        else if (type.equals("Beer")) {
+            rv = this.amountOfBeer;
+        }
+        return rv;
     }
 }

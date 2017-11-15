@@ -15,6 +15,9 @@ public class Resource {
     int amountOfStone;
     int amountOfCopper;
     int amountOfIron;
+    int amountOfBread;
+    int amountOfBeef;
+    int amountOfBeer;
     int amount;
 
     GameView view;
@@ -28,33 +31,59 @@ public class Resource {
         this.amountOfStone = 0;
         this.amountOfCopper = 0;
         this.amountOfIron = 0;
+        this.amountOfBread = 0;
+        this.amountOfBeef = 0;
+        this.amountOfBeer = 0;
         this.wealth = 0;
     }
 
     public void addResource(String name) {
 
-        if (name.equals("Stone")) {
-
-            this.amountOfStone = this.amountOfStone + 10;
-            view = GameView.getGameView();
-            this.amountOfStone = view.getResourceAmount() + 10;
-            view.updateResourceLabels(name, amountOfStone);
-            view.setResourceAmount(amountOfStone);
-
-        } else if (name.equals("Copper")) {
-            this.amountOfCopper = this.amountOfCopper + 10;
-
-            viewTwo = GameViewTwo.getGameView();
-            this.amountOfCopper = viewTwo.getResourceAmount() + 10;
-            viewTwo.updateResourceLabels(name, amountOfCopper);
-            viewTwo.setResourceAmount(amountOfCopper);
-        } else if (name.equals("Iron")) {
-            this.amountOfIron = this.amountOfIron + 10;
-
-            viewThree = GameViewThree.getGameView();
-            this.amountOfIron = viewThree.getResourceAmount() + 10;
-            viewThree.updateResourceLabels(name, amountOfIron);
-            viewThree.setResourceAmount(amountOfIron);
+        switch (name) {
+            case "Stone":
+                this.amountOfStone = this.amountOfStone + 10;
+                view = GameView.getGameView();
+                this.amountOfStone = view.getResourceAmount("Stone") + 10;
+                view.updateResourceLabels(name, amountOfStone);
+                view.setResourceAmount("Stone", amountOfStone);
+                break;
+            case "Bread":
+                this.amountOfBread = this.amountOfBread + 10;
+                view = GameView.getGameView();
+                this.amountOfBread = view.getResourceAmount("Bread") + 10;
+                view.updateResourceLabels(name, amountOfBread);
+                view.setResourceAmount("Bread", amountOfBread);
+                break;
+            case "Beef":
+                this.amountOfBeef = this.amountOfBeef + 10;
+                viewTwo = GameViewTwo.getGameView();
+                this.amountOfBeef = viewTwo.getResourceAmount("Beef") + 10;
+                viewTwo.updateResourceLabels(name, amountOfBeef);
+                viewTwo.setResourceAmount("Beef", amountOfBeef);
+                break;
+            case "Beer":
+                this.amountOfBeer = this.amountOfBeer + 10;
+                viewThree = GameViewThree.getGameView();
+                this.amountOfBeer = viewThree.getResourceAmount("Beer") + 10;
+                viewThree.updateResourceLabels(name, amountOfBeer);
+                viewThree.setResourceAmount("Beer", amountOfBeer);
+                break;
+            case "Copper":
+                this.amountOfCopper = this.amountOfCopper + 10;
+                viewTwo = GameViewTwo.getGameView();
+                this.amountOfCopper = viewTwo.getResourceAmount("Copper") + 10;
+                viewTwo.updateResourceLabels(name, amountOfCopper);
+                viewTwo.setResourceAmount("Copper", amountOfCopper);
+                break;
+            case "Iron":
+                this.amountOfIron = this.amountOfIron + 10;
+                viewThree = GameViewThree.getGameView();
+                this.amountOfIron = viewThree.getResourceAmount("Iron") + 10;
+                viewThree.updateResourceLabels(name, amountOfIron);
+                viewThree.setResourceAmount("Iron", amountOfIron);
+                break;
+            default:
+                break;
         }
 
     }

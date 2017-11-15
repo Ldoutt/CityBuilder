@@ -145,7 +145,7 @@ public class GameViewThree extends JFrame {
 
                 controller = GameController.getGameController();
                 if (controller.getMoney() >= 15) {
-                    selectedStructure = new ImageIcon("stone_house.png");
+                    selectedStructure = new ImageIcon("stone_house_small.gif");
                     structureToAdd = new Structure("Stone House");
                     moneyDecrease = 15;
                 }

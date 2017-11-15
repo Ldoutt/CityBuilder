@@ -34,22 +34,30 @@ public class AddAttributes extends TimerTask {
         for (Structure s : boardStuff) {
 
             
-            if (s.getName().equals("Mud House")) {
-                culture.addCulture(2, 1);
-            } else if (s.getName().equals("Wooden House")) {
-                culture.addCulture(3, 2);
-            } else if (s.getName().equals("Stone House")) {
-                culture.addCulture(4, 3);
-            } else if (s.getName().equals("Stone Mine")) {
-                culture.addCulture(1, 1);
-                resource.addResource("Stone");
-            } else if (s.getName().equals("Copper Mine")) {
-                culture.addCulture(2, 2);
-                resource.addResource("Copper");
-            } else if (s.getName().equals("Iron Mine")) {
-                culture.addCulture(3, 3);
-                resource.addResource("Iron");
-
+            switch (s.getName()) {
+                case "Mud House":
+                    culture.addCulture(2, 1);
+                    break;
+                case "Wooden House":
+                    culture.addCulture(3, 2);
+                    break;
+                case "Stone House":
+                    culture.addCulture(4, 3);
+                    break;
+                case "Stone Mine":
+                    culture.addCulture(1, 1);
+                    resource.addResource("Stone");
+                    break;
+                case "Copper Mine":
+                    culture.addCulture(2, 2);
+                    resource.addResource("Copper");
+                    break;
+                case "Iron Mine":
+                    culture.addCulture(3, 3);
+                    resource.addResource("Iron");
+                    break;
+                default:
+                    break;
             }
         }
 

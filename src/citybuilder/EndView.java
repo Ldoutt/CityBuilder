@@ -26,7 +26,7 @@ public class EndView extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setTitle("End Game");
-        this.setSize(new Dimension(500, 500));
+        this.setSize(new Dimension(700, 700));
 
         endPanel = new JPanel();
         this.add(endPanel);

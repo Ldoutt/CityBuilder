@@ -62,7 +62,7 @@ public class GameView extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setTitle("Stone Age");
-        this.setSize(new Dimension(600, 600));
+        this.setSize(new Dimension(700, 700));
         this.setLayout(null);
 
         playerPanel = new JPanel();
@@ -71,8 +71,8 @@ public class GameView extends JFrame {
         gamePanel = new JPanel();
         gamePanel.setLayout(null);
 
-        playerPanel.setBounds(450, 0, 150, 600);
-        gamePanel.setBounds(0, 0, 450, 600);
+        playerPanel.setBounds(525, 0, 175, 700);
+        gamePanel.setBounds(0, 0, 525, 700);
 
         this.add(playerPanel);
         this.add(gamePanel);
